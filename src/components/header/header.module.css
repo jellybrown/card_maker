@@ -1,0 +1,12 @@
+@value mainColor from '/src/common/colors.css';
+
+header {
+  background: mainColor;
+  width: 100%;
+  height: 100px;
+}
+.logo {
+}
+.text {
+  color: #fff;
+}
