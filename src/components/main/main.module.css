@@ -1,0 +1,20 @@
+@value mediaQuery from '/src/common/size.css';
+.mainPage {
+  width: 80%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.main {
+  width: 100%;
+  flex: 1;
+  background: #fff;
+  display: flex;
+}
+
+@media screen and (max-width: mediaQuery) {
+  .main {
+    flex-direction: column;
+  }
+}

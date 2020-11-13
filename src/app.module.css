@@ -1,19 +1,7 @@
 .rootPage {
-  position: relative;
   width: 100%;
   height: 100vh;
-}
-.loginPage {
-  width: 100%;
-  height: 80%;
   display: flex;
   justify-content: center;
-  transform: translateY(20%);
-}
-
-.footPage {
-  position: absolute;
-  width: 100%;
-  left: 0;
-  bottom: 0;
+  align-items: center;
 }
