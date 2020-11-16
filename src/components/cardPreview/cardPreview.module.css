@@ -1,4 +1,18 @@
+@value mainColor from '/src/common/colors.css';
+
 .preview {
   flex-basis: 50%;
-  background: darkcyan;
+}
+.title {
+  font-size: 1.5rem;
+  color: mainColor;
+  text-align: center;
+}
+
+.previewWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
 }

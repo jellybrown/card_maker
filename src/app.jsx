@@ -4,13 +4,8 @@ import styles from './app.module.css';
 import Main from './components/main/main';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
-const App = ({ authService }) => {
+const App = ({ FileInput, authService }) => {
  
-
-
-  
-
-
   return (
     
       <>
@@ -22,7 +17,7 @@ const App = ({ authService }) => {
           </Route>
 
          <Route path="/main">
-          <Main authService={authService}/> 
+          <Main FileInput={FileInput} authService={authService}/> 
         </Route>
       </div>
       </Switch>

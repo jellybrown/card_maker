@@ -1,4 +1,14 @@
+@value mainColor from '/src/common/colors.css';
+
 .maker {
   flex-basis: 50%;
-  background: cornflowerblue;
+}
+.title {
+  font-size: 1.5rem;
+  color: mainColor;
+  text-align: center;
+}
+.makerWrapper {
+  width: 96%;
+  margin: 0 auto;
 }

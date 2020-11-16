@@ -1,0 +1,56 @@
+.forms {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  border-top: 1px solid #ddd;
+  border-left: 1px solid #ddd;
+  margin-bottom: 2rem;
+}
+
+.input,
+.select,
+.textarea {
+  border: 0;
+  border-right: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+}
+
+.input,
+.select {
+  flex: 1 1 30%;
+  height: 25px;
+  font-size: 0.8rem;
+  padding-left: 0.5em;
+  color: #444;
+}
+
+.textarea {
+  flex-basis: 100%;
+  padding: 0.5em;
+}
+.input:focus,
+.select:focus,
+.textarea:focus {
+  outline: none;
+}
+
+.btns {
+  display: flex;
+  width: 100%;
+}
+
+.here,
+.del {
+  flex-basis: 50%;
+  border: none;
+  padding: 0.8em 0;
+
+  font-weight: bold;
+}
+.here {
+  background: #eee;
+}
+.del {
+  background: #30475e;
+  color: #fff;
+}
