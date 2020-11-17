@@ -1,0 +1,45 @@
+.container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  background: #eee;
+}
+
+.input {
+  display: none;
+  outline: none;
+}
+
+.btn {
+  width: 100%;
+  outline: none;
+  cursor: pointer;
+  border: none;
+  padding: 1em 0;
+}
+.btn.yellow {
+  background: #fdf6ec;
+}
+.bth.gray {
+  background: transparent;
+}
+.loading {
+  width: 2em;
+  height: 2em;
+  border: 3px solid lightgray;
+  border-top: 3px solid lightpink;
+  border-radius: 50%;
+  animation: spin 1.5s infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(359deg);
+  }
+}

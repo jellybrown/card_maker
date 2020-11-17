@@ -4,7 +4,9 @@
   flex-wrap: wrap;
   border-top: 1px solid #ddd;
   border-left: 1px solid #ddd;
+  border-bottom: inner 1px solid #ddd;
   margin-bottom: 2rem;
+  background: #eee;
 }
 
 .input,
@@ -37,20 +39,21 @@
 .btns {
   display: flex;
   width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
 }
 
-.here,
-.del {
-  flex-basis: 50%;
+.upload {
+  width: 100%;
+  height: 100%;
+}
+
+.add {
   border: none;
-  padding: 0.8em 0;
-
+  padding: 1em 0;
   font-weight: bold;
-}
-.here {
-  background: #eee;
-}
-.del {
   background: #30475e;
+  flex-basis: 50%;
   color: #fff;
 }

@@ -1,16 +1,25 @@
-import React, { useRef } from 'react';
+import React, { memo, useRef, useState } from 'react';
 import styles from './addForm.module.css';
 
 
-const AddForm = ({FileInput, addCard}) => {
-   
+const AddForm = memo(({FileInput, addCard}) => {
+    const formRef = useRef();
     const nameRef = useRef();
     const companyRef = useRef();
     const themeRef = useRef();
     const titRef = useRef();
     const emailRef = useRef();
     const messageRef = useRef();
-    
+    const [file, setFile] = useState({ fileName: null, fileURL: null});
+
+    const onFileChange = (file) => {
+        
+        console.log(file)
+        setFile({
+            fileName: file.name,
+            fileURL: file.url
+        })
+    };
 
     const onsubmit = (e) => {
         e.preventDefault();
@@ -22,14 +31,19 @@ const AddForm = ({FileInput, addCard}) => {
         title: titRef.current.value || '',
         email: emailRef.current.value || '',
         message: messageRef.current.value || '',
-        image: '../../images/default_logo.png'
+        fileName: file.fileName || '',
+        fileURL: file.fileURL || '',
     };
+    formRef.current.reset();
+    setFile({fileName: null, fileURL: null});
     addCard(newCard);
+    
+    
 
 }
 
     return (
-        <form className={styles.forms}>
+        <form ref={formRef} name="form" className={styles.forms}>
         <input ref={nameRef} name="name" className={styles.input}/>
         <input ref={companyRef} name="company" className={styles.input}/>
         <select ref={themeRef} name="theme" className={styles.select}>
@@ -43,13 +57,12 @@ const AddForm = ({FileInput, addCard}) => {
 
         <textarea ref={messageRef} name="message"  className={styles.textarea}/>
         <div className={styles.btns}>
-        <FileInput/>
-            <button className={styles.here} onClick={onsubmit}>Add</button>
-            <button className={styles.del}>Delete</button>
+            <FileInput name={file.fileName} className={styles.upload} onFileChange={onFileChange}/>
+            <button className={styles.add} onClick={onsubmit}>Add</button>
         </div>
         
      </form>
     )
-};
+});
 
 export default AddForm;

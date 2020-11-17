@@ -4,7 +4,7 @@ import styles from './app.module.css';
 import Main from './components/main/main';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
-const App = ({ FileInput, authService }) => {
+const App = ({ FileInput, authService, cardRepository }) => {
  
   return (
     
@@ -17,7 +17,10 @@ const App = ({ FileInput, authService }) => {
           </Route>
 
          <Route path="/main">
-          <Main FileInput={FileInput} authService={authService}/> 
+          <Main 
+          FileInput={FileInput} 
+          cardRepository={cardRepository}
+          authService={authService}/> 
         </Route>
       </div>
       </Switch>

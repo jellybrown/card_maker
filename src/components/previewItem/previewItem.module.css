@@ -23,12 +23,19 @@
   color: #fff;
 }
 .mainImg {
-  width: 6rem;
-  margin: 2rem;
+  width: 7em;
+  height: 7em;
+  margin: 1.5em;
+  border-radius: 50%;
+  overflow: hidden;
+  position: relative;
 }
 .image {
-  width: 100%;
-  border-radius: 50%;
+  height: 100%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
 .text {
   flex: 1;

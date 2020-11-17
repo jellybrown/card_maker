@@ -2,6 +2,7 @@
 
 .maker {
   flex-basis: 50%;
+  overflow-y: auto;
 }
 .title {
   font-size: 1.5rem;

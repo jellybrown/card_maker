@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
 import CardMaker from '../cardMaker/cardMaker';
@@ -6,62 +6,46 @@ import CardPreview from '../cardPreview/cardPreview';
 import Footer from '../footer/footer';
 import Header from '../header/header';
 import styles from './main.module.css';
-const Main = ({ FileInput, authService}) => {
+const Main = ({ FileInput, authService , cardRepository }) => {
 
 
+    const historyState = useHistory().state;
+    const [ cards , setCards ] = useState({});
+    const [ userId, setUserId ] = useState(historyState && historyState.id);
 
-    const [ cards , setCards ] = useState({
-        '1': {
-            id: 1,
-            theme : 'light',
-            name: 'yujin',
-            company: 'caa',
-            title:'software engineer',
-            email: 'dbwlszn@naver.com',
-            message: 'hahahah',
-            image: '../../images/default_logo.png'
-        },
-        '2': {
-            id: 2,
-            theme : 'dark',
-            name: 'ewrrw',
-            company: 'caa',
-            title:'software engineer',
-            email: 'dbwlszn@naver.com',
-            message: 'hahahah',
-            image: '../../images/default_logo.png'
-        },
-        '3': {
-            id: 3,
-            theme : 'dark',
-            name: 'assdfs',
-            company: 'caa',
-            title:'software engineer',
-            email: 'dbwlszn@naver.com',
-            message: 'hahahah',
-            image: '../../images/default_logo.png'
-        },
-        '4':  {
-            id: 4,
-            theme : 'colorful',
-            name: 'bbbb',
-            company: 'caa',
-            title:'software engineer',
-            email: 'dbwlszn@naver.com',
-            message: 'hahahah',
-            image: '../../images/default_logo.png'
-        }
-    });
+    const history = useHistory();
+    const onLogout =useCallback(() => {
+        authService.logout();
         
-    const addCard = (newCard) => {
-    setCards([...cards, newCard ]);
-    }
+    },[authService]);
+
+    useEffect(() => {
+        if(!userId) {
+            return;
+        }
+        const stopSync = cardRepository.syncCards(userId, cards => {
+            setCards(cards);
+        });
+        return () => stopSync();
+        }, [userId, cardRepository]);
+
+    useEffect(() => {
+        authService.onAuthChange(user => {
+            if(user) {
+               setUserId(user.uid)
+            } else {
+                history.push("/");
+            }
+        })
+    }, );
+
     const updateCard = (newCard) => {
         setCards(cards => {
             const updated = {...cards};
             updated[newCard.id] = newCard;
             return updated;
         });
+        cardRepository.saveCard(userId, newCard);
     }
         
     const deleteCard = (card) => {
@@ -70,22 +54,13 @@ const Main = ({ FileInput, authService}) => {
             delete updated[card.id];
             return updated;
         });
+        cardRepository.removeCard(userId, card);
     }
     
 
-    const history = useHistory();
-    const onLogout = () => {
-        authService.logout();
-        
-    }
+    
 
-    useEffect(() => {
-        authService.onAuthChange(user => {
-            if(!user) {
-                history.push("/");
-            }
-        })
-    })
+  
     return (
         <section className={styles.mainPage}>
             <Header onLogout={onLogout}/>
@@ -93,7 +68,7 @@ const Main = ({ FileInput, authService}) => {
                 <CardMaker 
                 FileInput={FileInput}
                 cards={cards} 
-                addCard={addCard} 
+                addCard={updateCard} 
                 updateCard={updateCard} 
                 deleteCard={deleteCard}
                 />  
