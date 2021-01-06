@@ -19,6 +19,7 @@
 
 - react의 렌더링 방식을 이해했습니다.
 - react를 상태관리 라이브러리 없이 공부하면서, 상태관리 라이브러리의 필요성을 알았습니다.
+- 외부 API와 같은 key는 감춰야하는 것을 알았습니다.
 - module css를 이용하여 깔끔한 component 작성하는 법을 알았습니다.
 
 <br>
@@ -31,7 +32,7 @@
 
 <br>
 
-<img src="https://github.com/jellybrown/card_maker/blob/main/card-maker.gif" width="650">
+<img src="https://github.com/jellybrown/card_maker/blob/main/card-maker.gif" width="750">
 
 <br>
 <br>
